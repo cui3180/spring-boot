@@ -1,4 +1,4 @@
-package com.cui.spring.web.control;
+package com.cui.spring.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/collage")
 public class CollageController {
-
     @RequestMapping(value="/index")
     public String getUser(){
         return "/collage/index";

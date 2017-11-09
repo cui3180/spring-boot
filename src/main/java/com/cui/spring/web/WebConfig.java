@@ -1,4 +1,4 @@
-package com.cui.spring.web.control;
+package com.cui.spring.web;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

@@ -1,4 +1,4 @@
-package com.cui.spring.web.control;
+package com.cui.spring.web;
 
 import com.cui.spring.model.Student;
 import com.cui.spring.service.fs.StudentService;

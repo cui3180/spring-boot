@@ -62,7 +62,7 @@
         collage
         (<include refid="Base_Column_List"/>)
         VALUES
-        (#{name}, #{phone}, #{status}, #{sex},#{company},#{workType},#{number},#{remark},now(),now())
+        (#{name}, #{phone}, #{status}, #{sex},#{company},#{workType},#{number},#{remark},0,now(),now())
     </insert>
 
         <update id="updateCollage" parameterType="com.cui.spring.model.Collage" >

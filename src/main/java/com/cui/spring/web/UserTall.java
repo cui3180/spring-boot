@@ -1,4 +1,4 @@
-package com.cui.spring.web.control;
+package com.cui.spring.web;
 
 import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSONObject;

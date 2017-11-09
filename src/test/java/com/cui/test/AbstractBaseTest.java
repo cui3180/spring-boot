@@ -1,24 +1,21 @@
-/*
-package com.jcloud.record.test;
 
+package com.cui.test;
+
+import com.cui.spring.Application;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-*/
+
+
 /**
  * Created by zhangxiaohang5 on 2017/3/13.
- *//*
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ComponentScan("com.jcloud.record")
-@ContextConfiguration(locations = {"classpath:spring-config.xml"})
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
 public abstract class AbstractBaseTest {
     protected static Logger logger = LoggerFactory.getLogger(AbstractBaseTest.class);
 }
-*/
+

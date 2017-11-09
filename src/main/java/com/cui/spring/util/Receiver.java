@@ -7,7 +7,6 @@ package com.cui.spring.util;
  */
 import java.util.concurrent.CountDownLatch;
 
-import com.cui.spring.web.control.UserTall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
