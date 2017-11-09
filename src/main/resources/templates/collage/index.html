@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="layui-body">
-    <form class="layui-form" action="./collage/add" method="post">
+    <form class="layui-form" action="./add" method="post">
         <div class="layui-input-block"></div>
         <div class="layui-input-block"></div>
         <div class="layui-form-item">
@@ -160,6 +160,8 @@
         //监听提交
         form.on('submit(form)', function(data){
             layer.msg(JSON.stringify(data.field));
+            form.submit();
+            layer.msg("success")
             return false;
         });
     });

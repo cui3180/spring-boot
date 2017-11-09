@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,7 @@ public class CollageServiceImpl implements CollageService{
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public BaseResponseVo addCollage(Collage cp) {
         logger.info("Begin--addCollage--cp={}",cp);
         BaseResponseVo baseResponseVo =new BaseResponseVo();
@@ -74,6 +76,7 @@ public class CollageServiceImpl implements CollageService{
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public BaseResponseVo updateCollage(Collage cp) {
         logger.info("Begin--updateCollage--cp={}",cp);
         BaseResponseVo baseResponseVo =new BaseResponseVo();
@@ -92,6 +95,7 @@ public class CollageServiceImpl implements CollageService{
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public BaseResponseVo delCollage(Integer id) {
         logger.info("Begin--delCollage--id={}",id);
         BaseResponseVo baseResponseVo =new BaseResponseVo();

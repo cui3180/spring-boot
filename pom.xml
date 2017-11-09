@@ -186,6 +186,12 @@
             <version>4.3.9.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <!--hessian-->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.7</version>
+        </dependency>
     </dependencies>
             <build>
             <plugins>

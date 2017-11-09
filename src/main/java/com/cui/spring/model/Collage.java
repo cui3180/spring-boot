@@ -1,5 +1,6 @@
 package com.cui.spring.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * Date： 2017/10/25.
  * Time： 13:55.
  */
-public class Collage {
+public class Collage implements Serializable {
 
     private Integer id;//id
     private String name;//姓名

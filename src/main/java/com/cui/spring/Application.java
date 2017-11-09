@@ -2,11 +2,13 @@ package com.cui.spring;
 
 import com.cui.spring.util.Receiver;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -23,6 +25,7 @@ import java.util.concurrent.CountDownLatch;
  */
 @ServletComponentScan
 @SpringBootApplication
+@ImportResource(locations = {"classpath*:/spring/spring-config.xml"})
 public class Application extends SpringBootServletInitializer {
 /*    @Bean
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,

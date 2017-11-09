@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--<context:annotation-config/>-->
+    <context:component-scan base-package="com.cui.spring.service"/>
+    <!-- 这个Bean映射了当URL是/userService时，处理器为userServiceInvoker -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/collageService">collageServiceInvoker</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!--接口提供 begin-->
+    <!-- Announce that this interface is a HTTP invoker service. -->
+    <bean id="collageServiceInvoker" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="collageService" />
+        <property name="serviceInterface" value="com.cui.spring.service.fs.CollageService" />
+    </bean>
+    <bean id="collageService" class="com.cui.spring.service.impl.CollageServiceImpl" />
+
+</beans>
