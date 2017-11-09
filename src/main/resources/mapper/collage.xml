@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cui.spring.dao.mapper.CollageMapper" >
+    <resultMap id="BaseResultMap" type="com.cui.spring.model.Collage" >
+        <id column="id" property="id"  />
+        <result column="name" property="name"  />
+        <result column="phone" property="phone" />
+        <result column="status" property="status" />
+        <result column="sex" property="sex" />
+        <result column="company" property="company" />
+        <result column="work_type" property="workType" />
+        <result column="number" property="number" />
+        <result column="remark" property="remark" />
+        <result column="yn" property="yn" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+       name,phone,status,sex,company,work_type,number,remark,yn,update_time,create_time
+    </sql>
+    <select id="getCollageList"  resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT
+        id,<include refid="Base_Column_List"/>
+        FROM collage
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+        </trim>
+         ORDER BY create_time
+        limit #{currentPage},#{pageSize}
+    </select>
+
+    <select id="getCollageCount"   resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT
+        COUNT (1)
+        FROM collage
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getCollageById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        id,<include refid="Base_Column_List"/>
+        FROM collage
+        WHERE
+        id=#{id}
+    </select>
+
+    <insert id="addCollage" parameterType="com.cui.spring.model.Collage" >
+        INSERT INTO
+        collage
+        (<include refid="Base_Column_List"/>)
+        VALUES
+        (#{name}, #{phone}, #{status}, #{sex},#{company},#{workType},#{number},#{remark},now(),now())
+    </insert>
+
+        <update id="updateCollage" parameterType="com.cui.spring.model.Collage" >
+            UPDATE
+            collage
+            SET
+            <if test="name != null">name = #{name},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="company != null and company !=''">company = #{company},</if>
+            <if test="workType != null and workType!=''">work_type = #{workType},</if>
+            <if test="number != null and number!=''">number = #{number},</if>
+            <if test="remark != null and remark=''">remark = #{remark},</if>
+            update_name=now()
+            WHERE
+            id = #{id}
+        </update>
+           <delete id="delCollage" parameterType="java.lang.Integer" >
+               DELETE FROM
+               collage
+               WHERE
+               id =#{id}
+           </delete>
+</mapper>

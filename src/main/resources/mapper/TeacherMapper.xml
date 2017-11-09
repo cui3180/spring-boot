@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cui.spring.dao.mapper.TeacherMapper" >
+    <resultMap id="BaseResultMap" type="com.cui.spring.model.Teacher" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+        <result column="teacher_remake" property="teacherRemake" jdbcType="VARCHAR"/>
+        <result column="count" property="count" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, teacher_name, teacher_remake,count,update_time,creat_time
+    </sql>
+    <select id="getTeachList"  resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM teacher
+    </select>
+
+    <select id="getTeachOne"  resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM teacher
+        WHERE id=#{id}
+    </select>
+
+
+    <insert id="addTeacher" parameterType="com.cui.spring.model.Teacher" >
+        INSERT INTO
+        teacher
+        (teacher_name, teacher_remake,count,update_time,creat_time)
+        VALUES
+        (#{teacherName}, #{teacherRemake}, #{count}, now(),now())
+    </insert>
+        <update id="updateTeacher" parameterType="com.cui.spring.model.Teacher" >
+            UPDATE
+            teacher
+            SET
+           update_time=now()
+            <if test="teacherName!=null and teacherName!=''">
+                ,teacher_name=#{teacherName}
+            </if>
+            <if test="teacherRemake!=null and teacherRemake!=''">
+                ,teacher_remake=#{teacherRemake}
+            </if>
+            WHERE
+            id = #{id}
+        </update>
+    <!--
+            <delete id="delete" parameterType="java.lang.Long" >
+                DELETE FROM
+                user
+                WHERE
+                id =#{id}
+            </delete>-->
+</mapper>
