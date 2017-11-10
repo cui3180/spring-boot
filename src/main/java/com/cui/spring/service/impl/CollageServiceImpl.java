@@ -6,6 +6,7 @@ import com.cui.spring.service.fs.CollageService;
 import com.cui.spring.util.BaseResponseVo;
 import com.cui.spring.util.PageInfo;
 import com.cui.spring.util.PageUtil;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class CollageServiceImpl implements CollageService{
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public BaseResponseVo addCollage(Collage cp) {
+    public BaseResponseVo addCollage(@NonNull Collage cp) {
         logger.info("Begin--addCollage--cp={}",cp);
         BaseResponseVo baseResponseVo =new BaseResponseVo();
         try {

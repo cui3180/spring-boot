@@ -1,6 +1,7 @@
 package com.cui.spring.model;
 
 
+import lombok.Data;
 import java.io.Serializable;
 
 /**
@@ -8,42 +9,12 @@ import java.io.Serializable;
  * Date： 2017/7/12.
  * Time： 14:36.
  */
+@Data
 public class User implements Serializable {
 
-    private long id;
+    private Long id;
     private String userName;
     private String userAge;
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserAge() {
-        return userAge;
-    }
-
-    public void setUserAge(String userAge) {
-        this.userAge = userAge;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", userAge='" + userAge + '\'' +
-                '}';
-    }
 }
