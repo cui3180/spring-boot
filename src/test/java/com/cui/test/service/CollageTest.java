@@ -1,8 +1,8 @@
 package com.cui.test.service;
 
-import com.cui.spring.model.Collage;
-import com.cui.spring.service.fs.CollageService;
-import com.cui.spring.util.BaseResponseVo;
+import com.cui.fs.api.CollageService;
+import com.cui.fs.model.Collage;
+import com.cui.fs.util.BaseResponseVo;
 import com.cui.test.AbstractBaseTest;
 import org.junit.Assert;
 import org.junit.Test;

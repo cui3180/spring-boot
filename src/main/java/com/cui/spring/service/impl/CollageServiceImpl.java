@@ -1,8 +1,9 @@
+/*
 package com.cui.spring.service.impl;
 
+import com.cui.fs.CollageService;
 import com.cui.spring.dao.mapper.CollageMapper;
 import com.cui.spring.model.Collage;
-import com.cui.spring.service.fs.CollageService;
 import com.cui.spring.util.BaseResponseVo;
 import com.cui.spring.util.PageInfo;
 import com.cui.spring.util.PageUtil;
@@ -16,24 +17,28 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Map;
 
+*/
 /**
  * Created by cjs
  * Date： 2017/10/25.
  * Time： 14:43.
- */
+ *//*
+
 @Service("collageService")
-public class CollageServiceImpl implements CollageService{
+public class CollageServiceImpl implements CollageService {
 
     private static Logger logger = LoggerFactory.getLogger(StudentServiceImpl.class.getName());
 
     @Autowired
     private CollageMapper collageMapper;
-    /**
+    */
+/**
      * 分页获取
      *
      * @param map
      * @return
-     */
+     *//*
+
     @Override
     public BaseResponseVo getCollagePage(Map map) {
         logger.info("Begin--getCollagePage--map={}",map);
@@ -68,6 +73,7 @@ public class CollageServiceImpl implements CollageService{
                 baseResponseVo.setIsSuccess(false);
                 return   baseResponseVo;
             }
+            baseResponseVo.setMessage("添加成功");
             baseResponseVo.setIsSuccess(true);
         }catch (Exception e){
            logger.error("error--addCollage--e{}",e);
@@ -129,3 +135,4 @@ public class CollageServiceImpl implements CollageService{
         return baseResponseVo;
     }
 }
+*/

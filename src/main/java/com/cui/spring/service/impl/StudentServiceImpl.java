@@ -1,8 +1,9 @@
+/*
 package com.cui.spring.service.impl;
 
+import com.cui.fs.api.StudentService;
 import com.cui.spring.dao.mapper.StudentMapper;
 import com.cui.spring.model.Student;
-import com.cui.spring.service.fs.StudentService;
 import com.cui.spring.util.BaseResponseVo;
 import com.cui.spring.util.query.QueryStudent;
 import org.apache.log4j.LogManager;
@@ -13,11 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+*/
 /**
  * Created by cjs
  * Date： 2017/9/18.
  * Time： 15:49.
- */
+ *//*
+
 @Service("studentServiceImpl")
 public class StudentServiceImpl implements StudentService {
     private static Logger logger = LogManager.getLogger(StudentServiceImpl.class.getName());
@@ -102,3 +105,4 @@ public class StudentServiceImpl implements StudentService {
         return responseVo;
     }
 }
+*/

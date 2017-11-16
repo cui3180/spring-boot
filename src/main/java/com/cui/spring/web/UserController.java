@@ -1,9 +1,10 @@
+/*
 package com.cui.spring.web;
 
-import com.cui.spring.model.User;
-import com.cui.spring.service.fs.UserService;
-import com.cui.spring.util.RedisUtil;
-import com.cui.spring.util.SendMassage;
+import com.cui.fs.api.UserService;
+import com.cui.fs.model.User;
+import com.cui.fs.util.RedisUtil;
+import com.cui.fs.util.SendMassage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.*;
 
 
+*/
 /**
  * Created by cjs
  * Date： 2017/7/12.
  * Time： 14:58.
- */
+ *//*
+
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
@@ -78,8 +81,10 @@ public class UserController {
     }
     @RequestMapping(value="/login")
     public  String login(HttpServletResponse response, HttpServletRequest request, String username , String password){
-    /*    redisUtil.set("maomao","maomaomao3180");
-        redisUtil.set("cuicui","cuicuicui3180");*/
+    */
+/*    redisUtil.set("maomao","maomaomao3180");
+        redisUtil.set("cuicui","cuicuicui3180");*//*
+
         Object maomao = redisUtil.get("maomao");
         Object cuicui = redisUtil.get("cuicui");
         String pass=username+password;
@@ -90,7 +95,8 @@ public class UserController {
         }
         return "err";
     }
-    /*@RequestMapping(value="/msg")
+    */
+/*@RequestMapping(value="/msg")
     @ResponseBody
     public  void sendMassage(HttpServletRequest request,String msg ){
         Cookie[] cookies = request.getCookies();
@@ -103,5 +109,7 @@ public class UserController {
         }
         redisUtil.publish(TopicChall.CHALL_MASSAGE_MAOAMO,msg+"%"+userName);
     }
-*/
+*//*
+
 }
+*/

@@ -1,9 +1,10 @@
+/*
 package com.cui.spring.web;
 
-import com.cui.spring.model.Student;
-import com.cui.spring.service.fs.StudentService;
-import com.cui.spring.util.BaseResponseVo;
-import com.cui.spring.util.query.QueryStudent;
+import com.cui.fs.api.StudentService;
+import com.cui.fs.model.Student;
+import com.cui.fs.util.BaseResponseVo;
+import com.cui.fs.util.query.QueryStudent;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+*/
 /**
  * Created by cjs
  * Date： 2017/9/7.
  * Time： 11:07.
- */
+ *//*
+
 @Controller
 @RequestMapping(value="/student")
 public class StudentController {
@@ -52,7 +55,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=UTF-8")
-    public ModelAndView getStudentList(QueryStudent queryStudent){
+    public ModelAndView getStudentList(Student queryStudent){
         ModelAndView map=new ModelAndView("list");
         try {
             BaseResponseVo<List<Student>> studentList = studentService.getStudentList(queryStudent);
@@ -82,3 +85,4 @@ public class StudentController {
     }
 
 }
+*/

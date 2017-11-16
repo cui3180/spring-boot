@@ -1,5 +1,6 @@
 package com.cui.spring;
 
+import com.cui.fs.api.CollageService;
 import com.cui.spring.util.Receiver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -15,6 +16,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -27,32 +29,19 @@ import java.util.concurrent.CountDownLatch;
 @SpringBootApplication
 @ImportResource(locations = {"classpath*:/spring/spring-config.xml"})
 public class Application extends SpringBootServletInitializer {
-/*    @Bean
-    RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
-                                            MessageListenerAdapter listenerAdapter) {
 
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic("maomao"));
-
-        return container;
+    //hessian 调用接口
+    @Bean
+    public HessianProxyFactoryBean helloClient() {
+        HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
+        factory.setServiceUrl("http://localhost/service/collageService");
+        factory.setServiceInterface(CollageService.class);
+        return factory;
     }
-
     @Bean
-    MessageListenerAdapter listenerAdapter(Receiver receiver) {
-        return new MessageListenerAdapter(receiver, "receiveMessage");
-    }*/
-
-    @Bean
-    Receiver receiver(CountDownLatch latch) {
-        return new Receiver(latch);
-    }
-
-    @Bean
-    CountDownLatch latch() {
+    public  CountDownLatch latch(){
         return new CountDownLatch(1);
     }
-
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(Application.class);

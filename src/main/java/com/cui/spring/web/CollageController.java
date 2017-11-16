@@ -1,17 +1,13 @@
 package com.cui.spring.web;
 
-import com.cui.spring.model.Collage;
-import com.cui.spring.model.User;
-import com.cui.spring.service.fs.CollageService;
-import com.cui.spring.util.BaseResponseVo;
-import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
+import com.cui.fs.api.CollageService;
+import com.cui.fs.model.Collage;
+import com.cui.fs.model.User;
+import com.cui.fs.util.BaseResponseVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
