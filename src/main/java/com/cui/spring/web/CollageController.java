@@ -36,6 +36,11 @@ public class CollageController {
         BaseResponseVo baseResponseVo = collageService.addCollage(collage);
         return baseResponseVo;
     }
-
+    @RequestMapping(value="/mod")
+    public String test(User user){
+        user.setUserName("sfsdf");
+        logger.info("Begin--getUser--user{}",user);
+        return "/collage/model";
+    }
 
 }

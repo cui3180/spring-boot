@@ -7,7 +7,7 @@
     <groupId>com.cui.springboot</groupId>
     <artifactId>spring-boot</artifactId>
     <version>2.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>spring-boot</name>
     <description>A back-end RESTful framework, integrated by Spring Boot and MyBatis</description>
@@ -40,12 +40,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-           <!-- <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -231,7 +225,7 @@
     <resources>
         <resource>
             <directory>${project.basedir}/src/main/resources</directory>
-            <filtering>true</filtering>
+            <filtering>false</filtering>
         </resource>
     </resources>
     </build>
