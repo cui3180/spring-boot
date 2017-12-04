@@ -1,4 +1,4 @@
-package com.cui.spring.util;
+package com.cui.spring.util.exception;
 
 public class ExceptionUtils {
 

@@ -1,6 +1,6 @@
 package com.cui.spring.util.query;
 
-import com.cui.spring.util.PageInfo;
+import com.cui.spring.util.page.PageInfo;
 
 import java.util.Date;
 

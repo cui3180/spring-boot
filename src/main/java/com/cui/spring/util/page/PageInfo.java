@@ -1,4 +1,4 @@
-package com.cui.spring.util;
+package com.cui.spring.util.page;
 
 /**
  * Created by huangjun on 2017/4/10.

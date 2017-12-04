@@ -1,5 +1,7 @@
-package com.cui.spring.util;
+package com.cui.spring.util.page;
 
+
+import com.cui.spring.util.page.PageInfo;
 
 /**
  * Created by wenxin on 2015/12/30.

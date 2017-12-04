@@ -28,7 +28,8 @@ public class CollageController {
     @RequestMapping(value="/index")
     public String getUser(User user){
         user.setUserName("sfsdf");
-        logger.info("Begin--getUser--user{}",user);
+        user.setUserName("TEST");
+        logger.info("Begin--getUser--user{}+呵呵呵呵呵呵呵呵",user.getUserName());
         return "/collage/index";
     }
     @RequestMapping(value = "add")

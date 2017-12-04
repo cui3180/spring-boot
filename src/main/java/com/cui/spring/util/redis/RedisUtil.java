@@ -1,4 +1,4 @@
-package com.cui.spring.util;
+package com.cui.spring.util.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;

@@ -203,12 +203,23 @@
             <artifactId>lombok</artifactId>
             <version>1.16.6</version>
         </dependency>
+        <!--单点登录-->
         <dependency>
-            <groupId>com.cui</groupId>
-            <artifactId>client</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/temp/client-1.0.jar</systemPath>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
+        <groupId>com.cui</groupId>
+        <artifactId>client</artifactId>
+        <version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${basedir}/temp/client-1.0.jar</systemPath>
+    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional><!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 -->
         </dependency>
     </dependencies>
     <build>
@@ -218,6 +229,7 @@
             <artifactId>spring-boot-maven-plugin</artifactId>
             <!-- Set the character encoding for the JVM -->
             <configuration>
+                <fork>true</fork>
                 <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
             </configuration>
         </plugin>
