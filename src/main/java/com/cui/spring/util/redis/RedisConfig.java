@@ -1,101 +1,79 @@
 package com.cui.spring.util.redis;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.*;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * Created by Administrator on 2017/3/1 14:45.
+ *
+ * @author vic
+ * @desc redis config bean
+ *
  */
 @Configuration
+@EnableAutoConfiguration
+@ConfigurationProperties(locations = "classpath:application.properties")
 public class RedisConfig {
-    /**
-     * 注入 RedisConnectionFactory
-     */
-    @Autowired
-    RedisConnectionFactory redisConnectionFactory;
 
-    /**
-     * 实例化 RedisTemplate 对象
-     *
-     * @return
-     */
+    private static Logger logger = Logger.getLogger(RedisConfig.class);
+
+    @Value("${spring.redis.host}")
+    private String host;
+    @Value("${spring.redis.port}")
+    private int port;
+    @Value("${spring.redis.password}")
+    private String password;
+    @Value("${spring.redis.timeout}")
+    private int timeout;
+
     @Bean
-    public RedisTemplate<String, Object> functionDomainRedisTemplate() {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        initDomainRedisTemplate(redisTemplate, redisConnectionFactory);
-        return redisTemplate;
+    public JedisPoolConfig getRedisConfig(){
+        JedisPoolConfig config = new JedisPoolConfig();
+        return config;
     }
 
-    /**
-     * 设置数据存入 redis 的序列化方式
-     *
-     * @param redisTemplate
-     * @param factory
-     */
-    private void initDomainRedisTemplate(RedisTemplate<String, Object> redisTemplate, RedisConnectionFactory factory) {
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
-        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        redisTemplate.setConnectionFactory(factory);
+    @Bean
+    public JedisPool getJedisPool(){
+        JedisPoolConfig config = getRedisConfig();
+        JedisPool pool = new JedisPool(config,host,port,timeout,null);
+        logger.info("init JredisPool ...");
+        return pool;
     }
 
-    /**
-     * 实例化 HashOperations 对象,可以使用 Hash 类型操作
-     *
-     * @param redisTemplate
-     * @return
-     */
-    @Bean
-    public HashOperations<String, String, Object> hashOperations(RedisTemplate<String, Object> redisTemplate) {
-        return redisTemplate.opsForHash();
+    public String getHostName() {
+        return host;
     }
 
-    /**
-     * 实例化 ValueOperations 对象,可以使用 String 操作
-     *
-     * @param redisTemplate
-     * @return
-     */
-    @Bean
-    public ValueOperations<String, Object> valueOperations(RedisTemplate<String, Object> redisTemplate) {
-        return redisTemplate.opsForValue();
+    public void setHostName(String hostName) {
+        this.host = hostName;
     }
 
-    /**
-     * 实例化 ListOperations 对象,可以使用 List 操作
-     *
-     * @param redisTemplate
-     * @return
-     */
-    @Bean
-    public ListOperations<String, Object> listOperations(RedisTemplate<String, Object> redisTemplate) {
-        return redisTemplate.opsForList();
+    public int getPort() {
+        return port;
     }
 
-    /**
-     * 实例化 SetOperations 对象,可以使用 Set 操作
-     *
-     * @param redisTemplate
-     * @return
-     */
-    @Bean
-    public SetOperations<String, Object> setOperations(RedisTemplate<String, Object> redisTemplate) {
-        return redisTemplate.opsForSet();
+    public void setPort(int port) {
+        this.port = port;
     }
 
-    /**
-     * 实例化 ZSetOperations 对象,可以使用 ZSet 操作
-     *
-     * @param redisTemplate
-     * @return
-     */
-    @Bean
-    public ZSetOperations<String, Object> zSetOperations(RedisTemplate<String, Object> redisTemplate) {
-        return redisTemplate.opsForZSet();
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
     }
 }
