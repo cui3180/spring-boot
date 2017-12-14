@@ -2,11 +2,14 @@ package com.cui.spring.web;
 
 import com.cui.fs.api.CollageService;
 import com.cui.fs.model.Collage;
-import com.cui.fs.model.User;
 import com.cui.fs.util.BaseResponseVo;
+import com.cui.spring.model.User;
+import com.cui.spring.service.TestService;
+import com.cui.spring.util.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,14 +27,21 @@ public class CollageController {
     protected static Logger logger = LoggerFactory.getLogger(CollageController.class);
     @Autowired
     private CollageService collageService;
-
+    @Autowired()
+    private TestService testService;
+    @Log
     @RequestMapping(value="/index")
     public String getUser(User user){
         user.setUserName("sfsdf");
         user.setUserName("TEST");
-        logger.info("Begin--getUser--user{}+呵呵呵呵呵呵呵呵",user.getUserName());
+        try {
+            testService.testMothed("TEST log",1,user);
+        }catch (Exception e){
+            return "/err";
+        }
         return "/collage/index";
     }
+    @Log
     @RequestMapping(value = "add")
     public @ResponseBody  BaseResponseVo addCollage(Collage collage){
         BaseResponseVo baseResponseVo = collageService.addCollage(collage);

@@ -9,6 +9,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.remoting.caucho.HessianProxyFactoryBean;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -20,6 +22,8 @@ import java.util.concurrent.CountDownLatch;
 @ServletComponentScan
 @SpringBootApplication
 @ImportResource(locations = {"classpath*:/spring/spring-config.xml"})
+@EnableScheduling
+@EnableAsync
 public class Application extends SpringBootServletInitializer {
 
     //hessian 调用接口
