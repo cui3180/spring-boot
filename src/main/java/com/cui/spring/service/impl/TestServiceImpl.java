@@ -29,5 +29,11 @@ public class TestServiceImpl implements TestService {
         return baseResponseVo;
     }
 
-
+    @Log
+    @Override
+    public BaseResponseVo testInterceptor(String str) {
+        BaseResponseVo baseResponseVo =new BaseResponseVo();
+        baseResponseVo.setIsSuccess(false);
+        return baseResponseVo;
+    }
 }

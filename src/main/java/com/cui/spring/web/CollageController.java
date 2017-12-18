@@ -5,7 +5,12 @@ import com.cui.fs.model.Collage;
 import com.cui.fs.util.BaseResponseVo;
 import com.cui.spring.model.User;
 import com.cui.spring.service.TestService;
+import com.cui.spring.util.exception.ServiceException;
+import com.cui.spring.util.log.InterceptorAdmin;
 import com.cui.spring.util.log.Log;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.SwaggerDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +32,13 @@ public class CollageController {
     protected static Logger logger = LoggerFactory.getLogger(CollageController.class);
     @Autowired
     private CollageService collageService;
-    @Autowired()
+    @Autowired
     private TestService testService;
+
+
+
+    @ApiOperation(value="测试", notes="")
+    @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @Log
     @RequestMapping(value="/index")
     public String getUser(User user){
@@ -36,7 +46,10 @@ public class CollageController {
         user.setUserName("TEST");
         try {
             testService.testMothed("TEST log",1,user);
-        }catch (Exception e){
+        }catch (ServiceException se){
+            return "/index";
+        }
+        catch (Exception e){
             return "/err";
         }
         return "/collage/index";

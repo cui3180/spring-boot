@@ -18,4 +18,7 @@ public interface TestService {
      */
     BaseResponseVo testMothed(String ad , Integer type , User user);
 
+
+    BaseResponseVo testInterceptor (String str);
+
 }
