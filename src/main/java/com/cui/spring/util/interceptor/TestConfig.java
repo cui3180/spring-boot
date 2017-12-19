@@ -1,6 +1,5 @@
-package com.cui.spring.util.localConfig;
+package com.cui.spring.util.interceptor;
 
-import com.cui.spring.util.interceptor.InterceptorTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;

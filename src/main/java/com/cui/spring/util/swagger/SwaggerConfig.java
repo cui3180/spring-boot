@@ -1,4 +1,4 @@
-package com.cui.spring.web;
+package com.cui.spring.util.swagger;
 
 import com.google.common.base.Predicate;
 import org.springframework.boot.autoconfigure.web.BasicErrorController;
@@ -39,7 +39,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
-                .contact("cui")
+                .contact("崔劲松")
                 .version("1.0")
                 .build();
     }

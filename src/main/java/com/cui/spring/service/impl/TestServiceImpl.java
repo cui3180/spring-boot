@@ -1,11 +1,14 @@
 package com.cui.spring.service.impl;
 
+import com.cui.spring.dao.mapper.TestMapper;
+import com.cui.spring.model.Test;
 import com.cui.spring.model.User;
 import com.cui.spring.service.TestService;
 import com.cui.spring.util.BaseResponseVo;
 import com.cui.spring.util.exception.ServiceException;
 import com.cui.spring.util.log.Log;
 import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,9 @@ import org.springframework.stereotype.Service;
  */
 @Service("testServiceImpl")
 public class TestServiceImpl implements TestService {
+
+    @Autowired
+    private TestMapper testMapper;
 
     @Override
     @Log
@@ -35,5 +41,21 @@ public class TestServiceImpl implements TestService {
         BaseResponseVo baseResponseVo =new BaseResponseVo();
         baseResponseVo.setIsSuccess(false);
         return baseResponseVo;
+    }
+
+    /**
+     * addTest
+     *
+     * @param test
+     * @return
+     */
+    @Log
+    @Override
+    public BaseResponseVo addTest(Test test) {
+        BaseResponseVo responseVo =new BaseResponseVo();
+        int i = testMapper.addTest(test);
+        responseVo.setIsSuccess(true);
+        responseVo.setData(i);
+        return responseVo;
     }
 }

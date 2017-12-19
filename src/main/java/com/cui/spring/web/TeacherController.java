@@ -24,7 +24,7 @@ import java.util.Objects;
 public class TeacherController {
     @Autowired
    private TeacherMapper teacherMapper;
-    @RequestMapping(value="/index")
+    @RequestMapping(value="/index",method = {RequestMethod.POST, RequestMethod.GET})
     public String getUser(){
         return "addteacher";
     }

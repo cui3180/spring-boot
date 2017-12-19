@@ -1,5 +1,6 @@
 package com.cui.spring.service;
 
+import com.cui.spring.model.Test;
 import com.cui.spring.model.User;
 import com.cui.spring.util.BaseResponseVo;
 
@@ -19,6 +20,18 @@ public interface TestService {
     BaseResponseVo testMothed(String ad , Integer type , User user);
 
 
+    /**
+     * Interceptor
+     * @param str
+     * @return
+     */
     BaseResponseVo testInterceptor (String str);
+
+    /**
+     * addTest
+     * @param test
+     * @return
+     */
+    BaseResponseVo addTest(Test test);
 
 }

@@ -11,12 +11,14 @@ import com.cui.spring.util.log.Log;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.SwaggerDefinition;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -28,8 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/collage")
-public class CollageController {
-    protected static Logger logger = LoggerFactory.getLogger(CollageController.class);
+@Slf4j
+public class CollageController  {
     @Autowired
     private CollageService collageService;
     @Autowired
@@ -37,33 +39,24 @@ public class CollageController {
 
 
 
-    @ApiOperation(value="测试", notes="")
-    @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @Log
-    @RequestMapping(value="/index")
+    @RequestMapping(value="/index",method = {RequestMethod.POST, RequestMethod.GET})
     public String getUser(User user){
         user.setUserName("sfsdf");
         user.setUserName("TEST");
-        try {
-            testService.testMothed("TEST log",1,user);
-        }catch (ServiceException se){
-            return "/index";
-        }
-        catch (Exception e){
-            return "/err";
-        }
+        testService.testMothed("TEST log",1,user);
         return "/collage/index";
     }
     @Log
-    @RequestMapping(value = "add")
+    @RequestMapping(value = "add",method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody  BaseResponseVo addCollage(Collage collage){
         BaseResponseVo baseResponseVo = collageService.addCollage(collage);
         return baseResponseVo;
     }
-    @RequestMapping(value="/mod")
+    @RequestMapping(value="/mod",method = {RequestMethod.POST, RequestMethod.GET})
     public String test(User user){
         user.setUserName("sfsdf");
-        logger.info("Begin--getUser--user{}",user);
+        log.info("Begin--getUser--user{}",user);
         return "/collage/model";
     }
 
