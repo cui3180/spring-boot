@@ -4,18 +4,10 @@ import com.cui.fs.api.CollageService;
 import com.cui.fs.model.Collage;
 import com.cui.fs.util.BaseResponseVo;
 import com.cui.spring.model.User;
-import com.cui.spring.service.TestService;
-import com.cui.spring.util.exception.ServiceException;
-import com.cui.spring.util.log.InterceptorAdmin;
 import com.cui.spring.util.log.Log;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.SwaggerDefinition;
+import com.spring.cui.fs.service.TestService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,8 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class CollageController  {
     @Autowired
-    private CollageService collageService;
-    @Autowired
     private TestService testService;
 
 
@@ -44,14 +34,14 @@ public class CollageController  {
     public String getUser(User user){
         user.setUserName("sfsdf");
         user.setUserName("TEST");
-        testService.testMothed("TEST log",1,user);
+        com.spring.cui.fs.vo.BaseResponseVo responseVo = testService.testMothed("", 2);
+        log.info("responseVo{}",responseVo);
         return "/collage/index";
     }
     @Log
     @RequestMapping(value = "add",method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody  BaseResponseVo addCollage(Collage collage){
-        BaseResponseVo baseResponseVo = collageService.addCollage(collage);
-        return baseResponseVo;
+        return null;
     }
     @RequestMapping(value="/mod",method = {RequestMethod.POST, RequestMethod.GET})
     public String test(User user){

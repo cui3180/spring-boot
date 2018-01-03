@@ -20,7 +20,7 @@
     </parent>
     <properties>
         <!-- Generic properties -->
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -232,6 +232,13 @@
         <version>1.0</version>
         <scope>system</scope>
         <systemPath>${basedir}/temp/client-1.0.jar</systemPath>
+    </dependency>
+        <dependency>
+        <groupId>com.cui.springboot</groupId>
+        <artifactId>fs</artifactId>
+        <version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${basedir}/temp/spring-boot-cui-fs-1.0-SNAPSHOT.jar</systemPath>
     </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

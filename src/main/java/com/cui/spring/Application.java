@@ -1,6 +1,7 @@
 package com.cui.spring;
 
 import com.cui.fs.api.CollageService;
+import com.spring.cui.fs.service.TestService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -30,8 +31,8 @@ public class Application extends SpringBootServletInitializer {
     @Bean
     public HessianProxyFactoryBean helloClient() {
         HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
-        factory.setServiceUrl("http://localhost/service/collageService");
-        factory.setServiceInterface(CollageService.class);
+        factory.setServiceUrl("http://localhost:8080/service/collageService");
+        factory.setServiceInterface(TestService.class);
         return factory;
     }
     @Bean
