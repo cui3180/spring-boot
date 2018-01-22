@@ -3,7 +3,6 @@ package com.cui.test.service;
 import com.cui.fs.api.CollageService;
 import com.cui.fs.model.Collage;
 import com.cui.fs.util.BaseResponseVo;
-import com.cui.spring.util.redis.ICache;
 import com.cui.test.AbstractBaseTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,8 +34,6 @@ public class CollageTest extends AbstractBaseTest {
         System.out.print(baseResponseVo);
     }
 
-    @Autowired
-    private ICache redisServiceImpl;
 
     @Test
     public  void  getTest(){
@@ -49,10 +46,10 @@ public class CollageTest extends AbstractBaseTest {
         collage.setSex(1);
         collage.setStatus(1);
         collage.setWorkType("jiaoyu");
-        redisServiceImpl.set("test01", collage);
+       /* redisServiceImpl.set("test01", collage);
         Collage test01 =(Collage)redisServiceImpl.get("test01",Collage.class);
         System.out.print(test01.getCompany()+"11111111111111111111111111111111111111111111111");
-        Assert.assertNotNull(test01);
+        Assert.assertNotNull(test01);*/
     }
 
 }

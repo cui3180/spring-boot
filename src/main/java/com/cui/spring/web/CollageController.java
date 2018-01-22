@@ -34,7 +34,7 @@ public class CollageController  {
     public String getUser(User user){
         user.setUserName("sfsdf");
         user.setUserName("TEST");
-        com.spring.cui.fs.vo.BaseResponseVo responseVo = testService.testMothed("", 2);
+        com.spring.cui.fs.vo.BaseResponseVo responseVo = testService.testMothed("11", 2);
         log.info("responseVo{}",responseVo);
         return "/collage/index";
     }

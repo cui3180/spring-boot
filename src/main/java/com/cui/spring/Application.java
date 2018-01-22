@@ -1,6 +1,8 @@
 package com.cui.spring;
 
 import com.cui.fs.api.CollageService;
+import com.cui.spring.util.hessain.CustomHessianProxyFactory;
+import com.cui.spring.util.hessain.CustomHessianProxyFactoryBean;
 import com.spring.cui.fs.service.TestService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,14 +29,8 @@ import java.util.concurrent.CountDownLatch;
 @EnableAsync
 public class Application extends SpringBootServletInitializer {
 
-    //hessian 调用接口
-    @Bean
-    public HessianProxyFactoryBean helloClient() {
-        HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
-        factory.setServiceUrl("http://localhost:8080/service/collageService");
-        factory.setServiceInterface(TestService.class);
-        return factory;
-    }
+
+
     @Bean
     public  CountDownLatch latch(){
         return new CountDownLatch(1);
